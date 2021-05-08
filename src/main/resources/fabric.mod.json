@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "templatemod",
+  "version": "${version}",
+  "name": "TemplateMod",
+  "description": "A Template Mod",
+  "authors": [
+    "Jamalam360"
+  ],
+  "contributors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/templatemod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.jamalam360.TemplateModInit"
+    ],
+    "client": [],
+    "server": []
+  },
+  "mixins": [
+    "templatemod.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*"
+  }
+}
