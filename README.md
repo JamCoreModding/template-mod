@@ -1,1 +1,1 @@
-"# FabricTemplateMod" 
+My Template For Fabric Mods

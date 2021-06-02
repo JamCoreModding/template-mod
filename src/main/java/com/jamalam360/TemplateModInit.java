@@ -7,7 +7,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class TemplateModInit implements ModInitializer {
-
     public static Logger LOGGER = LogManager.getLogger();
 
     public static final String MOD_ID = "templatemod";
@@ -15,12 +14,11 @@ public class TemplateModInit implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        log(Level.INFO, "Initializing");
-        //TODO: Initializer
+        log(Level.INFO, "Initializing " + MOD_NAME + " under the ID '" + MOD_ID + "'");
     }
 
     public static void log(Level level, String message){
-        LOGGER.log(level, "["+MOD_NAME+"] " + message);
+        LOGGER.log(level, message);
     }
 
 }
