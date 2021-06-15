@@ -2,13 +2,17 @@
   "schemaVersion": 1,
   "id": "templatemod",
   "version": "${version}",
-  "name": "TemplateMod",
+  "name": "Template Mod",
   "description": "A Template Mod",
   "authors": [
-    "Jamalam360"
+    "Jamalam360 - Owner, Developer"
   ],
   "contributors": [],
-  "contact": {},
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/",
+    "issues": "https://github.com/Jamalam360/FabricTemplateMod/issues",
+    "sources": "https://github.com/Jamalam360/FabricTemplateMod"
+  },
   "license": "MIT",
   "icon": "assets/templatemod/icon.png",
   "environment": "*",
