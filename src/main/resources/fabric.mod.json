@@ -18,7 +18,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.jamalam360.TemplateModInit"
+      "io.github.jamalam360.TemplateModInit"
     ],
     "client": [],
     "server": []
