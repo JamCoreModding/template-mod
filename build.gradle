@@ -25,14 +25,14 @@ repositories {
 }
 
 dependencies {
-	minecraft('com.mojang:minecraft:${project.minecraft_version}')
-	mappings('net.fabricmc:yarn:${project.yarn_mappings}:v2')
-	modImplementation('net.fabricmc:fabric-loader:${project.loader_version}')
+	minecraft('com.mojang:minecraft:' + project.property('minecraft_version'))
+	mappings('net.fabricmc:yarn:' + project.property('yarn_mappings') + ':v2')
+	modImplementation('net.fabricmc:fabric-loader:' + project.property('loader_version'))
 
-	modImplementation('net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}')
-	include(modImplementation('com.github.Jamalam360:LibJam:${project.libjam_version}'))
+	modImplementation('net.fabricmc.fabric-api:fabric-api:' + project.property('fabric_api_version'))
+	include(modImplementation('com.github.Jamalam360:LibJam:' + project.property('libjam_version')))
 
-	modRuntime('com.terraformersmc:modmenu:${project.mod_menu_version}')
+	modRuntime('com.terraformersmc:modmenu:' + project.property('mod_menu_version'))
 }
 
 processResources {
@@ -51,6 +51,8 @@ tasks.withType(JavaCompile) {
 tasks.named('build') {
 	dependsOn tasks.updateLicenses
 }
+
+
 
 task sourcesJar(type: Jar, dependsOn: classes) {
 	classifier = 'sources'
