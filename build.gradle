@@ -77,7 +77,7 @@ tasks.register('template') {
         modJson.text = modJson.text.replace('%id%', modId).replace('%name%', modName).replace('%description%', modDescription).replace('%github%', githubUrl)
 
         mainClass.renameTo('src/main/java/io/github/jamalam360/' + modName + 'ModInit.java')
-		mixinJson.renameTo('src/main/resources/templatemod.mixins.json/' + modId + '.mixins.json')
+		mixinJson.renameTo('src/main/resources/' + modId + '.mixins.json')
 		assetsDirectory.renameTo('src/main/resources/assets/' + modId)
     }
 }
