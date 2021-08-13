@@ -30,9 +30,9 @@ dependencies {
     modImplementation('net.fabricmc:fabric-loader:' + project.property('loader_version'))
 
     modImplementation('net.fabricmc.fabric-api:fabric-api:' + project.property('fabric_api_version'))
-    //include(modImplementation('com.github.Jamalam360:LibJam:' + project.property('libjam_version')))
+    include(modImplementation('com.github.Jamalam360:LibJam:' + project.property('libjam_version')))
 
-    //modRuntime('com.terraformersmc:modmenu:' + project.property('mod_menu_version'))
+    modRuntime('com.terraformersmc:modmenu:' + project.property('mod_menu_version'))
 }
 
 processResources {
@@ -70,13 +70,14 @@ tasks.register('template') {
         def modName = ant.modName
         def modDescription = ant.modDescription
         def githubUrl = ant.githubUrl
+        def mainClassName = modName + 'ModInit'
 
         gradleProperties.text = gradleProperties.text.replace('%id%', modId)
         readme.text = readme.text.replace('%description%', modDescription)
-        mainClass.text = mainClass.text.replace('%id%', modId).replace('%name%', modName)
+        mainClass.text = mainClass.text.replace('%id%', modId).replace('%name%', modName).replace('%mainclass%', mainClassName)
         modJson.text = modJson.text.replace('%id%', modId).replace('%name%', modName).replace('%description%', modDescription).replace('%github%', githubUrl)
 
-        mainClass.renameTo('src/main/java/io/github/jamalam360/' + modName + 'ModInit.java')
+        mainClass.renameTo('src/main/java/io/github/jamalam360/' + mainClassName + '.java')
 		mixinJson.renameTo('src/main/resources/' + modId + '.mixins.json')
 		assetsDirectory.renameTo('src/main/resources/assets/' + modId)
     }
