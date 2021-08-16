@@ -75,7 +75,7 @@ tasks.register('template') {
         def mainClassName = modName + 'ModInit'
 
         def resources = 'src/main/resources/'
-        def java = 'src/main/java/io/github/jamalam360/' + modId
+        def java = 'src/main/java/io/github/jamalam360/' + modId + '/'
 
         gradleProperties.text = gradleProperties.text.replace('%id%', modId)
         readme.text = readme.text.replace('%description%', modDescription)
