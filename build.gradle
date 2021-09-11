@@ -1,7 +1,7 @@
 plugins {
-	id 'fabric-loom' version '0.8-SNAPSHOT'
-	id 'maven-publish'
-	id 'org.cadixdev.licenser' version '0.6.0'
+    id 'fabric-loom' version '0.9.+'
+    id 'maven-publish'
+    id 'org.cadixdev.licenser' version '0.6.0'
 }
 
 sourceCompatibility = JavaVersion.VERSION_16
@@ -15,70 +15,84 @@ minecraft {
 }
 
 repositories {
-	maven{
-		url "https://maven.terraformersmc.com/releases"
-	}
+    maven {
+        url 'https://maven.terraformersmc.com/releases'
+    }
+
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 dependencies {
-	//to change the versions see the gradle.properties file
-	minecraft 'com.mojang:minecraft:${project.minecraft_version}'
-	mappings 'net.fabricmc:yarn:${project.yarn_mappings}:v2'
-	modImplementation 'net.fabricmc:fabric-loader:${project.loader_version}'
+    minecraft('com.mojang:minecraft:' + project.property('minecraft_version'))
+    mappings('net.fabricmc:yarn:' + project.property('yarn_mappings') + ':v2')
+    modImplementation('net.fabricmc:fabric-loader:' + project.property('loader_version'))
 
-	modImplementation 'net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}'
+    modImplementation('net.fabricmc.fabric-api:fabric-api:' + project.property('fabric_api_version'))
+    include(modImplementation('com.github.Jamalam360:LibJam:' + project.property('libjam_version'))) {
+        transitive = false
+    }
 
-	modRuntime 'com.terraformersmc:modmenu:2.0.0-beta.7'
+    modRuntime('com.terraformersmc:modmenu:' + project.property('mod_menu_version'))
 }
 
 processResources {
-	inputs.property 'version', project.version
+    inputs.property 'version', project.version
 
-	filesMatching('fabric.mod.json') {
-		expand 'version': project.version
-	}
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
 }
 
-// ensure that the encoding is set to UTF-8, no matter what the system default is
-// this fixes some edge cases with special characters not displaying correctly
-// see http://yodaconditions.net/blog/fix-for-java-file-encoding-problems-with-gradle.html
 tasks.withType(JavaCompile) {
-	licenseFormat
-	options.encoding = 'UTF-8'
+    licenseFormat
+    options.encoding = 'UTF-8'
 }
 
-// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the 'build' task
-// if it is present.
-// If you remove this task, sources will not be generated.
+tasks.named('build') {
+    dependsOn tasks.updateLicenses
+}
+
+tasks.register('template') {
+    doFirst {
+        def gradleProperties = new File('gradle.properties')
+        def readme = new File('README.md')
+        def mainClass = new File('src/main/java/io/github/jamalam360/TemplateModInit.java')
+        def modJson = new File('src/main/resources/fabric.mod.json')
+        def mixinJson = new File('src/main/resources/templatemod.mixins.json')
+		def assetsDirectory = new File('src/main/resources/assets/templatemod')
+
+        ant.input(message: 'Enter Mod ID: ', addProperty: 'modId')
+        ant.input(message: 'Enter Mod Name: ', addProperty: 'modName')
+        ant.input(message: 'Enter Mod Description: ', addProperty: 'modDescription')
+        ant.input(message: 'Enter GitHub URL: ', addProperty: 'githubUrl')
+
+        def modId = ant.modId
+        def modName = ant.modName
+        def modDescription = ant.modDescription
+        def githubUrl = ant.githubUrl
+        def mainClassName = modName + 'ModInit'
+
+        def resources = 'src/main/resources/'
+        def java = 'src/main/java/io/github/jamalam360/' + modId + '/'
+
+        gradleProperties.text = gradleProperties.text.replace('%id%', modId)
+        readme.text = readme.text.replace('%description%', modDescription)
+        mainClass.text = mainClass.text.replace('%id%', modId).replace('%name%', modName).replace('%mainclass%', mainClassName)
+        modJson.text = modJson.text.replace('%id%', modId).replace('%name%', modName).replace('%description%', modDescription).replace('%github%', githubUrl)
+
+        mainClass.renameTo(java + mainClassName + '.java')
+		mixinJson.renameTo(resources + modId + '.mixins.json')
+		assetsDirectory.renameTo(resources + 'assets/' + modId)
+    }
+}
+
 task sourcesJar(type: Jar, dependsOn: classes) {
-	classifier = 'sources'
-	from sourceSets.main.allSource
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
 
 jar {
-	from 'LICENSE'
-}
-
-// configure the maven publication
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			// add all the jars that should be included when publishing to maven
-			artifact(jar) {
-				builtBy remapJar
-			}
-			artifact('${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}.jar'){
-				builtBy remapJar
-			}
-			artifact(sourcesJar) {
-				builtBy remapSourcesJar
-			}
-		}
-	}
-
-	// select the repositories you want to publish to
-	repositories {
-		// uncomment to publish to the local maven
-		// mavenLocal()
-	}
+    from 'LICENSE'
 }
