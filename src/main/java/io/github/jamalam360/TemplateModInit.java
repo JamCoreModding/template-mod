@@ -44,5 +44,4 @@ public class %mainclass% implements ModInitializer {
     public static void log(Level level, String message){
         LOGGER.log(level, message);
     }
-
 }
