@@ -76,6 +76,7 @@ tasks.named('build') {
 //endregion
 
 //region Template Task
+//TODO: Delete this task:
 tasks.register('template') {
     doFirst {
         def gradleProperties = new File('gradle.properties')
