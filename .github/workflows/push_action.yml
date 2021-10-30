@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Check If Running In Template Repository
         if: ${{ github.event.repository.name == 'FabricTemplateMod' }}
-        run: exit 0
+        uses: andymckay/cancel-action@0.2
       - name: Check If Initial Commit
         if: ${{ github.event.commits[0].message == 'Initial commit' }}
-        run: exit 0
+        uses: andymckay/cancel-action@0.2
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Setup JDK ${{ matrix.java }}
