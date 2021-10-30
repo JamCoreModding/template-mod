@@ -22,7 +22,7 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Setup JDK ${{ matrix.java }}
-        if: {{  env.run != 'false'  }}
+        if: ${{  env.run != 'false'  }}
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
@@ -30,7 +30,7 @@ jobs:
         if: ${{ runner.os != 'Windows' && env.run != 'false' }}
         run: chmod +x ./gradlew
       - name: Build
-        if: {{  env.run != 'false'  }}
+        if: ${{  env.run != 'false'  }}
         run: ./gradlew build
       - name: Capture Build Artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '16' && env.run != 'false' }}
