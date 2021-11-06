@@ -8,24 +8,32 @@ jobs:
         java: [
             16
         ]
-        os: [ ubuntu-20.04, windows-latest ]
+        os: [ ubuntu-20.04 ]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
-      - name: validate gradle wrapper
+      - name: Check If Running In Template Repository
+        if: ${{ github.event.repository.name == 'FabricTemplateMod' }}
+        run: echo "run=false" >> $GITHUB_ENV
+      - name: Check If Initial Commit
+        if: ${{ github.event.commits[0].message == 'Initial commit' }}
+        run: echo "run=false" >> $GITHUB_ENV
+      - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
-      - name: setup jdk ${{ matrix.java }}
+      - name: Setup JDK ${{ matrix.java }}
+        if: ${{  env.run != 'false'  }}
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
-      - name: make gradle wrapper executable
-        if: ${{ runner.os != 'Windows' }}
+      - name: Make Gradle Wrapper Executable
+        if: ${{ runner.os != 'Windows' && env.run != 'false' }}
         run: chmod +x ./gradlew
-      - name: build
+      - name: Build
+        if: ${{  env.run != 'false'  }}
         run: ./gradlew build
-      - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '16' }}
+      - name: Capture Build Artifacts
+        if: ${{ runner.os == 'Linux' && matrix.java == '16' && env.run != 'false' }}
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts
