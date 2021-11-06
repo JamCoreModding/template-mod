@@ -48,7 +48,7 @@ dependencies {
     modImplementation('net.fabricmc.fabric-api:fabric-api:' + project.property('fabric_api_version'))
     include(modImplementation('com.github.Jamalam360:LibJam:' + project.property('libjam_version')))
 
-    modRuntime('com.terraformersmc:modmenu:' + project.property('mod_menu_version'))
+    modApi('com.terraformersmc:modmenu:' + project.property('mod_menu_version'))
 }
 //endregion
 
