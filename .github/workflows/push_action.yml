@@ -41,8 +41,8 @@ jobs:
         run: |
           ./gradlew updateLicenses
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -m "Add changes" -a
+          git config --local user.name "github-actions"
+          git commit -m "Update License [bot]" -a
       - name: Build
         if: ${{  env.run != 'false'  }}
         run: ./gradlew build
