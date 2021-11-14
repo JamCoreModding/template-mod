@@ -57,10 +57,3 @@ jobs:
           body: 'Automated Update by GitHub Actions'
           branch: 'update-minecraft/${{ steps.check.outputs.id }}'
           assignees: 'Jamalam360'
-
-      - name: Capture Build Artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '16' && steps.check.outputs.id != '' }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: Artifacts
-          path: build/libs/
