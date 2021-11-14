@@ -30,7 +30,7 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Update Licenses
-        continue-on-error: false
+        continue-on-error: true
         run: |
           ./gradlew updateLicenses
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
