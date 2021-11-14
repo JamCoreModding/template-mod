@@ -44,6 +44,7 @@ jobs:
           branch: ${{ github.ref }}
 
   build:
+    needs: update-license
     strategy:
       matrix:
         java: [
