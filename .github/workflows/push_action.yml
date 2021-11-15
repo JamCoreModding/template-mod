@@ -90,8 +90,8 @@ jobs:
         id: branch-name
         uses: tj-actions/branch-names@v5
         
-      - name: Pull License Changes
-        run: git pull origin ${{ steps.branch-name.outputs.current_branch }
+      - name: Pull License Changes # We have to pull it in here in case the license changes in the previous step - I've had problems with it
+        run: git pull origin ${{ steps.branch-name.outputs.current_branch }}
       
       - name: Build
         if: ${{  env.run != 'false'  }}
