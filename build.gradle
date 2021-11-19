@@ -89,12 +89,12 @@ tasks.register('template') {
         ant.input(message: 'Enter Mod ID: ', addProperty: 'modId')
         ant.input(message: 'Enter Mod Name: ', addProperty: 'modName')
         ant.input(message: 'Enter Mod Description: ', addProperty: 'modDescription')
-        ant.input(message: 'Enter GitHub URL: ', addProperty: 'githubUrl')
+        ant.input(message: 'Enter GitHub Repository Name: ', addProperty: 'github')
 
         def modId = ant.modId
         def modName = ant.modName
         def modDescription = ant.modDescription
-        def githubUrl = ant.githubUrl
+        def github = ant.github
         def mainClassName = modName + 'ModInit'
 
         def resources = 'src/main/resources/'
