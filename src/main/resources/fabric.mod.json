@@ -10,8 +10,8 @@
   "contributors": [],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/",
-    "issues": "%github%/issues",
-    "sources": "%github%"
+    "issues": "https://github.com/JamCoreModding/%github%/issues",
+    "sources": "https://github.com/JamCoreModding/%github%"
   },
   "license": "MIT",
   "icon": "assets/%id%/icon.png",
@@ -27,10 +27,11 @@
     "%id%.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.11.3",
+    "fabricloader": ">=0.12.5",
     "fabric": "*"
   },
   "custom": {
-    "notify_version_url": "https://raw.githubusercontent.com/JamCoreModding/Meta/main/data/mod_versions.json"
+    "notify_gradle_properties_url": "https://raw.githubusercontent.com/JamCoreModding/%github%/main/gradle.properties",
+    "notify_gradle_properties_key": "mod_version"
   }
 }
