@@ -94,6 +94,7 @@ jobs:
         run: chmod +x ./gradlew
         
       - name: Pull License Changes
+        if: ${{  env.run != 'false'  }}
         run: git pull origin ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Build
