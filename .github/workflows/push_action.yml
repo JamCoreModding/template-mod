@@ -102,7 +102,7 @@ jobs:
         run: ./gradlew build
 
       - name: Capture Build Artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '16' && env.run != 'false' }}
+        if: ${{ env.run != 'false' }}
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts
