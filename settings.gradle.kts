@@ -1,8 +1,9 @@
 pluginManagement {
     repositories {
-        var mavenUrls = listOf(
+        val mavenUrls = listOf(
             "https://maven.fabricmc.net/",
-            "https://server.bbkr.space/artifactory/libs-release/"
+            "https://server.bbkr.space/artifactory/libs-release/",
+            "https://maven.quiltmc.org/repository/release/"
         )
 
         for (url in mavenUrls) {
@@ -11,5 +12,15 @@ pluginManagement {
 
         mavenCentral()
         gradlePluginPortal()
+    }
+}
+
+enableFeaturePreview("VERSION_CATALOGS")
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
+            from(files("versions.toml"))
+        }
     }
 }
