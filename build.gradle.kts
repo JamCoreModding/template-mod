@@ -37,11 +37,9 @@ dependencies {
         addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:1.18.2+build.22:v2"))
     })
 
-    // Fabric:
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
 
-    // Optional:
     modApi(libs.optional.mod.menu)
 }
 
