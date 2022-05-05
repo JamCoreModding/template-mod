@@ -61,6 +61,7 @@ await transformMainClass();
 await transformAssetsDirectory();
 await transformFabricModJson();
 await transformMixinsJson();
+await transformGradleProperties();
 await transformReadme();
 await transformLicense();
 
@@ -171,7 +172,7 @@ async function transformFabricModJson() {
     fmjContent
       .replaceAll(
         "io.github.jamalam360.templatemod.TemplateModInit",
-        mainClass.substring(`${Deno.cwd()}/src/main/java/`.length).replaceAll("/", "."),
+        mainClass.substring(`${Deno.cwd()}/src/main/java/`.length, ".java".length).replaceAll("/", "."),
       )
       .replaceAll("templatemod", options.mod_id!)
       .replaceAll("Template Mod", options.mod_name!)
@@ -190,6 +191,18 @@ async function transformMixinsJson() {
         mixins,
         mixinsContent.replaceAll("io.github.jamalam360.templatemod", mainPackage.replaceAll("/", "."))
     );
+}
+
+async function transformGradleProperties() {
+  const gradleProperties = `${Deno.cwd()}/gradle.properties`;
+  const gradlePropertiesContent = await Deno.readTextFile(gradleProperties);
+  await Deno.writeTextFile(
+    gradleProperties,
+    gradlePropertiesContent
+    .replaceAll("FabricTemplateMod", options.github_repo!)
+    .replaceAll("JamCoreModding", options.github_user!)
+    .replaceAll("template-mod", options.mod_id!.replaceAll("_", "-"))
+  );
 }
 
 async function transformReadme() {
