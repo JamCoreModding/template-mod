@@ -31,17 +31,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class TemplateModInit implements ModInitializer {
-    public static Logger LOGGER = LogManager.getLogger();
-
     public static final String MOD_ID = "templatemod";
     public static final String MOD_NAME = "Template Mod";
+    public static Logger LOGGER = LogManager.getLogger(MOD_NAME);
 
     @Override
     public void onInitialize() {
-        log(Level.INFO, "Initializing '" + MOD_NAME + "' under the ID '" + MOD_ID + "'");
-    }
-
-    public static void log(Level level, String message){
-        LOGGER.log(level, message);
+        LOGGER.log("Initialising " + MOD_NAME + "...");
     }
 }
