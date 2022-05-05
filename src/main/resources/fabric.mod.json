@@ -1,37 +1,33 @@
 {
   "schemaVersion": 1,
-  "id": "%id%",
+  "id": "templatemod",
   "version": "${version}",
-  "name": "%name%",
-  "description": "%description%",
+  "name": "Template Mod",
+  "description": "A Fabric mod template",
   "authors": [
-    "Jamalam360 - Owner, Developer"
+    "Jamalam"
   ],
-  "contributors": [],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/",
-    "issues": "https://github.com/%githubOrg%/%github%/issues",
-    "sources": "https://github.com/%githubOrg%/%github%"
+    "sources": "https://github.com/JamCoreModding/FabricTemplateMod",
+    "issues": "https://github.com/JamCoreModding/FabricTemplateMod/issues"
   },
   "license": "MIT",
-  "icon": "assets/%id%/icon.png",
+  "icon": "assets/templatemod/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.jamalam360.%name%ModInit"
-    ],
-    "client": [],
-    "server": []
+      "io.github.jamalam360.templatemod.TemplateModInit"
+    ]
   },
   "mixins": [
-    "%id%.mixins.json"
+    "templatemod.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.12.5",
     "fabric": "*"
   },
   "custom": {
-    "notify_gradle_properties_url": "https://raw.githubusercontent.com/%githubOrg%/%github%/main/gradle.properties",
-    "notify_gradle_properties_key": "modVersion"
+    "notify_gradle_properties_url": "https://raw.githubusercontent.com/JamCoreModding/FabricTemplateMod/main/gradle.properties",
+    "notify_gradle_properties_key": "mod_version"
   }
 }

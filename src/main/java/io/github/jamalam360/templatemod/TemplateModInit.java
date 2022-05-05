@@ -1,7 +1,7 @@
 /*
  * The MIT License (MIT)
  *
- * Copyright (c) 2021 Jamalam360
+ * Copyright (c) 2022 Jamalam (james@jamalam.tech)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package io.github.jamalam360;
+package io.github.jamalam360.templatemod;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -30,11 +30,11 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class %mainclass% implements ModInitializer {
+public class TemplateModInit implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
 
-    public static final String MOD_ID = "%id%";
-    public static final String MOD_NAME = "%name%";
+    public static final String MOD_ID = "templatemod";
+    public static final String MOD_NAME = "Template Mod";
 
     @Override
     public void onInitialize() {

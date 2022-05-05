@@ -4,22 +4,21 @@ build/
 out/
 classes/
 
-#IDEA
+#IntelliJ IDEA
 .idea/
 *.iml
 *.ipr
 *.iws
 
-#vscode
+#VSCode
 .settings/
 .vscode/
 bin/
 .classpath
 .project
 
-#fabric
+#Fabric
 run/
 
-#update action
-version_manifest_v2.json
-.cache/
+#Use this file to store any access tokens (e.g. CurseForge API tokens)
+local.properties
