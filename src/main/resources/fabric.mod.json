@@ -8,10 +8,8 @@
     "Jamalam"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft",
     "sources": "https://github.com/JamCoreModding/FabricTemplateMod",
-    "issues": "https://github.com/JamCoreModding/FabricTemplateMod/issues",
-    "discord": "https://discord.jamalam.tech"
+    "issues": "https://github.com/JamCoreModding/FabricTemplateMod/issues"
   },
   "license": "MIT",
   "icon": "assets/templatemod/icon.png",
