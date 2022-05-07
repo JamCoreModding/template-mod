@@ -33,10 +33,14 @@ import org.apache.logging.log4j.Logger;
 public class TemplateModInit implements ModInitializer {
     public static final String MOD_ID = "templatemod";
     public static final String MOD_NAME = "Template Mod";
-    public static Logger LOGGER = LogManager.getLogger(MOD_NAME);
+    private static Logger LOGGER = getLogger("Initializer");
 
     @Override
     public void onInitialize() {
-        LOGGER.log("Initialising " + MOD_NAME + "...");
+        LOGGER.info("Initialising " + MOD_NAME + "...");
+    }
+
+    public static Logger getLogger(String name) {
+        return LogManager.getLogger(MOD_NAME + "/" + name);
     }
 }
