@@ -3,9 +3,18 @@ minecraft = "1.18.2"
 fabric-loader = "0.13.3"
 fabric-api = "0.51.1+1.18.2"
 mod-menu = "3.2.1"
+lazy-dfu = "0.1.2"
 
 [libraries]
-minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft"  }
+minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
+
+# Fabric is for fabric dependencies
 fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
 fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
+
+# Optional is for optional libraries, that you use the API of or have compatibility with.
 optional-mod-menu = { module = "com.terraformersmc:modmenu", version.ref = "mod-menu" }
+
+# Runtime is for libraries/mods you want to be present in your development environment, but that you
+# don't use the API of
+runtime-lazy-dfu = { module = "maven.modrinth:lazydfu", version.ref = "lazy-dfu" }
