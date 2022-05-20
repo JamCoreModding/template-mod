@@ -1,5 +1,6 @@
 [versions]
 minecraft = "1.18.2"
+mappings-build = "23"
 fabric-loader = "0.13.3"
 fabric-api = "0.51.1+1.18.2"
 mod-menu = "3.2.1"
