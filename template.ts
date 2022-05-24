@@ -55,7 +55,6 @@ const mainPackage = `${options.maven_group}/${
 const mainClass =
   `${Deno.cwd()}/src/main/java/${mainPackage.replaceAll(".", "/")}/${options.main_class_name}.java`;
 
-await transformCi();
 await transformMainPackage();
 await transformMainClass();
 await transformAssetsDirectory();
@@ -64,72 +63,6 @@ await transformMixinsJson();
 await transformGradleProperties();
 await transformReadme();
 await transformLicense();
-
-async function transformCi() {
-  const ci = `
-name: Update Licenses and Build
-on: push
-
-jobs:
-  build:
-    strategy:
-      matrix:
-        java: [
-            17
-        ]
-        os: [ ubuntu-20.04 ]
-    runs-on: \${{ matrix.os }}
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-        with:
-          persist-credentials: false
-          fetch-depth: 0
-
-      - name: Get Branch Name
-        id: branch-name
-        uses: tj-actions/branch-names@v5
-
-      - name: Validate Gradle Wrapper
-        uses: gradle/wrapper-validation-action@v1
-
-      - name: Setup JDK \${{ matrix.java }}
-        uses: actions/setup-java@v1
-        with:
-          java-version: \${{ matrix.java }}
-
-      - name: Make Gradle Wrapper Executable
-        if: \${{ runner.os != 'Windows' }}
-        run: chmod +x ./gradlew
-
-      - name: Update Licenses
-        continue-on-error: true
-        run: |
-          ./gradlew updateLicenses
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions"
-          git pull origin \${{ steps.branch-name.outputs.current_branch }}
-          git commit -m "Update Licenses [bot]" -a
-
-      - name: Push License Changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: \${{ secrets.GITHUB_TOKEN }}
-          branch: \${{ github.ref }}
-          
-      - name: Build
-        run: ./gradlew build
-
-      - name: Capture Build Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: Artifacts
-          path: build/libs/
-    `;
-
-  await Deno.writeTextFile(`${Deno.cwd()}/.github/workflows/build.yml`, ci);
-  await Deno.remove(`${Deno.cwd()}/.github/workflows/.exists`)
-}
 
 async function transformMainPackage() {
   await Deno.mkdir(`${Deno.cwd()}/src/main/java/${mainPackage.replaceAll(".", "/")}`, { recursive: true });
