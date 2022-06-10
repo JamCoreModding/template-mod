@@ -25,15 +25,13 @@
 package io.github.jamalam360.templatemod;
 
 import net.fabricmc.api.ModInitializer;
-
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class TemplateModInit implements ModInitializer {
     public static final String MOD_ID = "templatemod";
     public static final String MOD_NAME = "Template Mod";
-    private static Logger LOGGER = getLogger("Initializer");
+    private static final Logger LOGGER = getLogger("Initializer");
 
     @Override
     public void onInitialize() {

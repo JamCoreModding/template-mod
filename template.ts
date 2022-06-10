@@ -63,6 +63,7 @@ await transformMixinsJson();
 await transformGradleProperties();
 await transformReadme();
 await transformLicense();
+await transformChangelogs();
 
 async function transformMainPackage() {
   await Deno.mkdir(`${Deno.cwd()}/src/main/java/${mainPackage.replaceAll(".", "/")}`, { recursive: true });
@@ -154,4 +155,18 @@ async function transformLicense() {
         "./LICENSE",
         await (await Deno.readTextFile("./LICENSE")).replaceAll("Jamalam", options.author!)
     );
+}
+
+async function transformChangelogs() {
+  await Deno.writeTextFile(
+      "./CHANGELOG_TEMPLATE.md",
+      (await Deno.readTextFile("./CHANGELOG_TEMPLATE.md"))
+          .replaceAll("FabricTemplateMod", options.github_repo!)
+          .replaceAll("JamCoreModding", options.github_user!)
+  );
+
+  await Deno.writeTextFile(
+      "./CHANGELOG.md",
+      await Deno.readTextFile("./CHANGELOG_TEMPLATE.md")
+  )
 }

@@ -1,8 +1,8 @@
 plugins {
-    id("fabric-loom") version "0.11-SNAPSHOT"
+    id("fabric-loom") version "0.12-SNAPSHOT"
     id("org.quiltmc.quilt-mappings-on-loom") version "4.2.0"
     id("io.github.juuxel.loom-quiltflower") version "1.7.2"
-    id("io.github.p03w.machete") version "1.0.11"
+    id("io.github.p03w.machete") version "1.1.2"
     id("org.cadixdev.licenser") version "0.6.1"
 }
 
@@ -44,14 +44,4 @@ dependencies {
     modApi(libs.optional.mod.menu)
 
     modLocalRuntime(libs.runtime.lazy.dfu)
-}
-
-tasks {
-    named("prepareRemapJar") {
-        dependsOn("optimizeOutputsOfJar")
-    }
-
-    named("remapJar") {
-        dependsOn("optimizeOutputsOfJar")
-    }
 }

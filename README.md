@@ -8,5 +8,5 @@ To automatically initialise the template, use [Deno](https://deno.land/),
 and run the command `deno run -A --unstable scripts/template.ts`.
 
 To see available properties, see `gradle.properties`. If the comments in that
-file reference adding a secret, you must add it either to the `secrets.properties`
+file reference adding a secret, you must add it either to the `local.properties`
 file, or as an environment variable (with the name in upper case).
