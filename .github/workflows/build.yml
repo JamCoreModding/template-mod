@@ -1,4 +1,5 @@
 name: Update Licenses and Build
+
 on: [
   push,
   pull_request
@@ -92,41 +93,30 @@ jobs:
         id: branch-name
         uses: tj-actions/branch-names@v5
 
-      - name: Check For --no-actions Flag
-        if: ${{ contains(github.event.commits[0].message, '--no-actions') }}
-        run: echo "run=false" >> $GITHUB_ENV
-
       - name: Validate Gradle Wrapper
-        if: ${{  env.run != 'false'  }}
         uses: gradle/wrapper-validation-action@v1
 
       - name: Setup JDK ${{ matrix.java }}
-        if: ${{  env.run != 'false'  }}
         uses: actions/setup-java@v1
         with:
           java-version: ${{ matrix.java }}
 
       - name: Make Gradle Wrapper Executable
-        if: ${{ runner.os != 'Windows' && env.run != 'false' }}
         run: chmod +x ./gradlew
 
       - name: Pull License Changes
-        if: ${{  env.run != 'false'  }}
         run: git pull origin ${{ steps.branch-name.outputs.current_branch }}
 
       - name: Build
-        if: ${{  env.run != 'false'  }}
         run: ./gradlew build
 
       - name: Capture Build Artifacts
-        if: ${{ env.run != 'false' }}
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts
           path: build/libs/
 
       - name: Capture Development Build Artifacts
-        if: ${{ env.run != 'false' }}
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts (Dev)
