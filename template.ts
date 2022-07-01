@@ -106,7 +106,7 @@ async function transformFabricModJson() {
     fmjContent
       .replaceAll(
         "io.github.jamalam360.templatemod.TemplateModInit",
-        mainClass.substring(`${Deno.cwd()}/src/main/java/`.length, ".java".length).replaceAll("/", "."),
+        `${mainPackage}/${options.main_class_name}`,
       )
       .replaceAll("templatemod", options.mod_id!)
       .replaceAll("Template Mod", options.mod_name!)

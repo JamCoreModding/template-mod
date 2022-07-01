@@ -24,7 +24,8 @@
   ],
   "depends": {
     "fabricloader": ">=0.12.5",
-    "fabric": "*"
+    "fabric": "*",
+    "jamlib": ">=0.1.0"
   },
   "custom": {
     "notify_gradle_properties_url": "https://raw.githubusercontent.com/JamCoreModding/FabricTemplateMod/main/gradle.properties",

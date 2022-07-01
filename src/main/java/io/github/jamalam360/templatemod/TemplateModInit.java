@@ -24,21 +24,16 @@
 
 package io.github.jamalam360.templatemod;
 
+import io.github.jamalam360.jamlib.log.JamLibLogger;
 import net.fabricmc.api.ModInitializer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class TemplateModInit implements ModInitializer {
     public static final String MOD_ID = "templatemod";
     public static final String MOD_NAME = "Template Mod";
-    private static final Logger LOGGER = getLogger("Initializer");
+    public static final JamLibLogger LOGGER = JamLibLogger.getLogger(MOD_NAME);
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Initialising " + MOD_NAME + "...");
-    }
-
-    public static Logger getLogger(String name) {
-        return LogManager.getLogger(MOD_NAME + "/" + name);
+        LOGGER.logInitialize();
     }
 }

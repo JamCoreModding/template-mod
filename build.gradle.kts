@@ -1,9 +1,9 @@
 plugins {
     id("fabric-loom") version "0.12-SNAPSHOT"
-    id("org.quiltmc.quilt-mappings-on-loom") version "4.2.0"
-    id("io.github.juuxel.loom-quiltflower") version "1.7.2"
-    id("io.github.p03w.machete") version "1.1.2"
-    id("org.cadixdev.licenser") version "0.6.1"
+    id("org.quiltmc.quilt-mappings-on-loom") version "4.2.+"
+    id("io.github.juuxel.loom-quiltflower") version "1.7.+"
+    id("io.github.p03w.machete") version "1.+"
+    id("org.cadixdev.licenser") version "0.6.+"
 }
 
 apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/main/publishing.gradle.kts")
@@ -17,7 +17,8 @@ version = mod_version
 repositories {
     val mavenUrls = mapOf(
         Pair("https://maven.terraformersmc.com/releases", listOf("com.terraformersmc")),
-        Pair("https://api.modrinth.com/maven", listOf("maven.modrinth"))
+        Pair("https://api.modrinth.com/maven", listOf("maven.modrinth")),
+        Pair("https://maven.jamalam.tech/releases", listOf("io.github.jamalam360")),
     )
 
     for (mavenPair in mavenUrls) {
@@ -40,6 +41,8 @@ dependencies {
 
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
+
+    modImplementation(libs.required.jam.lib)
 
     modApi(libs.optional.mod.menu)
 
