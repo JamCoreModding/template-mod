@@ -30,7 +30,7 @@ import net.fabricmc.api.ModInitializer;
 public class TemplateModInit implements ModInitializer {
     public static final String MOD_ID = "templatemod";
     public static final String MOD_NAME = "Template Mod";
-    public static final JamLibLogger LOGGER = JamLibLogger.getLogger(MOD_NAME);
+    public static final JamLibLogger LOGGER = JamLibLogger.getLogger(MOD_ID);
 
     @Override
     public void onInitialize() {

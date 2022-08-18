@@ -23,12 +23,8 @@
     "templatemod.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.12.5",
+    "fabricloader": "*",
     "fabric": "*",
-    "jamlib": ">=0.1.0"
-  },
-  "custom": {
-    "notify_gradle_properties_url": "https://raw.githubusercontent.com/JamCoreModding/FabricTemplateMod/main/gradle.properties",
-    "notify_gradle_properties_key": "mod_version"
+    "jamlib": ">=0.4.0"
   }
 }
