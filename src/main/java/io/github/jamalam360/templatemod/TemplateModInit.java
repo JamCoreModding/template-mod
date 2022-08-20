@@ -26,14 +26,18 @@ package io.github.jamalam360.templatemod;
 
 import io.github.jamalam360.jamlib.log.JamLibLogger;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 
 public class TemplateModInit implements ModInitializer {
     public static final String MOD_ID = "templatemod";
-    public static final String MOD_NAME = "Template Mod";
     public static final JamLibLogger LOGGER = JamLibLogger.getLogger(MOD_ID);
 
     @Override
     public void onInitialize() {
         LOGGER.logInitialize();
+    }
+
+    public static Identifier idOf(String path) {
+        return new Identifier(MOD_ID, path);
     }
 }
