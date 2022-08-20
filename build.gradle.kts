@@ -1,14 +1,11 @@
 plugins {
-    id("fabric-loom") version "0.12-SNAPSHOT"
-    id("org.quiltmc.quilt-mappings-on-loom") version "4.2.0"
-    id("io.github.juuxel.loom-quiltflower") version "1.7.+"
+    id("org.quiltmc.loom") version "0.12.+"
     id("io.github.p03w.machete") version "1.+"
     id("org.cadixdev.licenser") version "0.6.+"
 }
 
-apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/main/publishing.gradle.kts")
-
-apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/main/misc.gradle.kts")
+apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/quilt/publishing.gradle.kts")
+apply(from = "https://raw.githubusercontent.com/JamCoreModding/Gronk/quilt/misc.gradle.kts")
 
 val mod_version: String by project
 
@@ -48,8 +45,8 @@ dependencies {
             }
     )
 
-    modImplementation(libs.fabric.loader)
-    modImplementation(libs.fabric.api)
+    modImplementation(libs.quilt.loader)
+    modImplementation(libs.quilted.fabric.api)
     modApi(libs.required.jamlib)
     modImplementation(libs.optional.mod.menu)
     modLocalRuntime(libs.runtime.lazy.dfu)

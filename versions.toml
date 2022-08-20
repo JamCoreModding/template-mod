@@ -1,17 +1,17 @@
 [versions]
 minecraft = "1.19.2"
 mappings-build = "3"
-fabric-loader = "0.14.9"
-fabric-api = "0.60.0+1.19.2"
-jamlib = "0.4.3"
+quilt-loader = "0.17.3"
+quilted-fabric-api = "4.0.0-beta.9+0.60.0-1.19.2"
+jamlib = "0.4.4"
 mod-menu = "4.0.6"
 lazy-dfu = "0.1.3"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 
-fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
-fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
+quilt-loader = { module = "org.quiltmc:quilt-loader", version.ref = "quilt-loader" }
+quilted-fabric-api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api", version.ref = "quilted-fabric-api" }
 
 required-jamlib = { module = "io.github.jamalam360:jamlib", version.ref = "jamlib" }
 

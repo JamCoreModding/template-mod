@@ -25,15 +25,16 @@
 package io.github.jamalam360.templatemod;
 
 import io.github.jamalam360.jamlib.log.JamLibLogger;
-import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
+import org.quiltmc.loader.api.ModContainer;
+import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
 public class TemplateModInit implements ModInitializer {
     public static final String MOD_ID = "templatemod";
     public static final JamLibLogger LOGGER = JamLibLogger.getLogger(MOD_ID);
 
     @Override
-    public void onInitialize() {
+    public void onInitialize(ModContainer mod) {
         LOGGER.logInitialize();
     }
 

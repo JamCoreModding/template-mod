@@ -110,22 +110,23 @@ async function transformAssetsDirectory() {
   );
 }
 
-async function transformFabricModJson() {
-  const fmj = `./src/main/resources/fabric.mod.json`;
-  const fmjContent = await Deno.readTextFile(fmj);
+async function transformQuiltModJson() {
+  const qmj = `./src/main/resources/quilt.mod.json`;
+  const qmjContent = await Deno.readTextFile(qmj );
   await Deno.writeTextFile(
-    fmj,
-    fmjContent
+    qmj,
+    qmjContent
       .replaceAll(
         "io.github.jamalam360.templatemod.TemplateModInit",
         `${mainPackage}.${options.main_class_name}`,
       )
+      .replaceAll("io.github.jamalam360", options.maven_group!)
       .replaceAll("templatemod", options.mod_id!)
       .replaceAll("Template Mod", options.mod_name!)
-      .replaceAll("A Fabric mod template", options.description!)
+      .replaceAll("A Quilt mod template", options.description!)
       .replaceAll("Jamalam", options.author!)
       .replaceAll("JamCoreModding", options.github_user!)
-      .replaceAll("FabricTemplateMod", options.github_repo!),
+      .replaceAll("TemplateMod", options.github_repo!),
   );
 }
 
