@@ -8,8 +8,8 @@
     "Jamalam"
   ],
   "contact": {
-    "sources": "https://github.com/JamCoreModding/FabricTemplateMod",
-    "issues": "https://github.com/JamCoreModding/FabricTemplateMod/issues"
+    "sources": "https://github.com/JamCoreModding/TemplateMod",
+    "issues": "https://github.com/JamCoreModding/TemplateMod/issues"
   },
   "license": "MIT",
   "icon": "assets/templatemod/icon.png",

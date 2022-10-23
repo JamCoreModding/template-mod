@@ -125,8 +125,9 @@ async function transformFabricModJson() {
       .replaceAll("A Fabric mod template", options.description!)
       .replaceAll("Jamalam", options.author!)
       .replaceAll("JamCoreModding", options.github_user!)
+      .replaceAll("TemplateMod", options.github_repo!)
       .replaceAll("FabricTemplateMod", options.github_repo!),
-  );
+);
 }
 
 async function transformMixinsJson() {
@@ -155,8 +156,9 @@ async function transformGradleProperties() {
   await Deno.writeTextFile(
     gradleProperties,
     gradlePropertiesContent
-      .replaceAll("FabricTemplateMod", options.github_repo!)
-      .replaceAll("JamCoreModding", options.github_user!)
+      .replaceAll("TemplateMod", options.github_repo!)
+        .replaceAll("FabricTemplateMod", options.github_repo!)
+        .replaceAll("JamCoreModding", options.github_user!)
       .replaceAll("template-mod", options.mod_id!.replaceAll("_", "-")),
   );
 }
