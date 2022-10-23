@@ -15,11 +15,11 @@ version = mod_version
 
 repositories {
     val mavenUrls =
-            mapOf(
-                    Pair("https://maven.terraformersmc.com/releases", listOf("com.terraformersmc")),
-                    Pair("https://api.modrinth.com/maven", listOf("maven.modrinth")),
-                    Pair("https://maven.jamalam.tech/releases", listOf("io.github.jamalam360")),
-            )
+        mapOf(
+            Pair("https://maven.terraformersmc.com/releases", listOf("com.terraformersmc")),
+            Pair("https://api.modrinth.com/maven", listOf("maven.modrinth")),
+            Pair("https://maven.jamalam.tech/releases", listOf("io.github.jamalam360")),
+        )
 
     for (mavenPair in mavenUrls) {
         maven {
@@ -35,19 +35,10 @@ repositories {
 
 dependencies {
     minecraft(libs.minecraft)
-    mappings(
-            loom.layered {
-                addLayer(
-                        quiltMappings.mappings(
-                                "org.quiltmc:quilt-mappings:${libs.versions.minecraft.get()}+build.${libs.versions.mappings.build.get()}:v2"
-                        )
-                )
-            }
-    )
+    mappings(variantOf(libs.quilt.mappings) { classifier("intermediary-v2") })
 
-    modImplementation(libs.quilt.loader)
-    modImplementation(libs.quilted.fabric.api)
-    modApi(libs.required.jamlib)
-    modImplementation(libs.optional.mod.menu)
-    modLocalRuntime(libs.runtime.lazy.dfu)
+    modImplementation(libs.bundles.quilt)
+    modApi(libs.bundles.required)
+    modImplementation(libs.bundles.optional)
+    modLocalRuntime(libs.bundles.runtime)
 }

@@ -1,6 +1,6 @@
-# FabricTemplateMod
+# JamCore Template Mod
 
-This is the (opinionated) template used by JamCore to create their mods. The
+This is the (opinionated) template used by JamCore to create our mods. The
 repo contains an MIT license file for ease of use, as that's what our mods use,
 but you are free to use the template without the license.
 

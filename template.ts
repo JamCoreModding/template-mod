@@ -112,7 +112,7 @@ async function transformAssetsDirectory() {
 
 async function transformQuiltModJson() {
   const qmj = `./src/main/resources/quilt.mod.json`;
-  const qmjContent = await Deno.readTextFile(qmj );
+  const qmjContent = await Deno.readTextFile(qmj);
   await Deno.writeTextFile(
     qmj,
     qmjContent
@@ -157,6 +157,7 @@ async function transformGradleProperties() {
     gradleProperties,
     gradlePropertiesContent
       .replaceAll("FabricTemplateMod", options.github_repo!)
+      .replaceAll("TemplateMod", options.github_repo!)
       .replaceAll("JamCoreModding", options.github_user!)
       .replaceAll("template-mod", options.mod_id!.replaceAll("_", "-")),
   );
@@ -188,6 +189,7 @@ async function transformChangelogs() {
     "./CHANGELOG_TEMPLATE.md",
     (await Deno.readTextFile("./CHANGELOG_TEMPLATE.md"))
       .replaceAll("FabricTemplateMod", options.github_repo!)
+      .replaceAll("TemplateMod", options.github_repo!)
       .replaceAll("JamCoreModding", options.github_user!),
   );
 
