@@ -16,12 +16,12 @@ version = mod_version
 
 repositories {
     val mavenUrls =
-            mapOf(
-                    Pair("https://maven.terraformersmc.com/releases", listOf("com.terraformersmc")),
-                    Pair("https://api.modrinth.com/maven", listOf("maven.modrinth")),
-                    Pair("https://maven.jamalam.tech/releases", listOf("io.github.jamalam360")),
-                    Pair("https://maven.quiltmc.org/repository/release", listOf("org.quiltmc")),
-            )
+        mapOf(
+            Pair("https://maven.terraformersmc.com/releases", listOf("com.terraformersmc")),
+            Pair("https://api.modrinth.com/maven", listOf("maven.modrinth")),
+            Pair("https://maven.jamalam.tech/releases", listOf("io.github.jamalam360")),
+            Pair("https://maven.quiltmc.org/repository/release", listOf("org.quiltmc")),
+        )
 
     for (mavenPair in mavenUrls) {
         maven {

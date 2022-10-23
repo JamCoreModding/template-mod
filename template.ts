@@ -127,7 +127,7 @@ async function transformFabricModJson() {
       .replaceAll("JamCoreModding", options.github_user!)
       .replaceAll("TemplateMod", options.github_repo!)
       .replaceAll("FabricTemplateMod", options.github_repo!),
-);
+  );
 }
 
 async function transformMixinsJson() {
@@ -157,8 +157,8 @@ async function transformGradleProperties() {
     gradleProperties,
     gradlePropertiesContent
       .replaceAll("TemplateMod", options.github_repo!)
-        .replaceAll("FabricTemplateMod", options.github_repo!)
-        .replaceAll("JamCoreModding", options.github_user!)
+      .replaceAll("FabricTemplateMod", options.github_repo!)
+      .replaceAll("JamCoreModding", options.github_user!)
       .replaceAll("template-mod", options.mod_id!.replaceAll("_", "-")),
   );
 }
