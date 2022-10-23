@@ -1,7 +1,7 @@
 import {
   Input,
   prompt,
-} from "https://deno.land/x/cliffy@v0.23.0/prompt/mod.ts";
+} from "https://deno.land/x/cliffy@v0.25.2/prompt/mod.ts";
 import { join } from "https://deno.land/std@v0.152.0/path/mod.ts";
 
 const options = await prompt([
@@ -64,7 +64,7 @@ const mainClass = join(
 await transformMainPackage();
 await transformMainClass();
 await transformAssetsDirectory();
-await transformFabricModJson();
+await transformQuiltModJson();
 await transformMixinsJson();
 await transformGradleProperties();
 await transformReadme();
